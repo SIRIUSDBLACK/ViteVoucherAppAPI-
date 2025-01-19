@@ -1,0 +1,34 @@
+import { createBrowserRouter } from "react-router-dom"
+import Layout from "./src/components/Layout";
+import ErrorNotFoundPage from "./src/pages/ErrorNotFoundPage";
+import DashboardPage from "./src/pages/DashboardPage";
+import ProductPage from "./src/pages/ProductPage";
+import VoucherPage from "./src/pages/VoucherPage";
+import VoucherDetailPage from "./src/pages/VoucherDetailPage";
+const router = createBrowserRouter([
+    {
+        path : "/",
+        element : <Layout/>,
+        errorElement : <ErrorNotFoundPage/>,
+        children : [
+            {
+                path : "/",
+                element : <DashboardPage/>   
+            },
+            {
+                path : "product",
+                element : <ProductPage/>   
+            },
+            {
+                path : "voucher",
+                element : <VoucherPage/>   
+            },
+            {
+                path : "voucher-detail",
+                element : <VoucherDetailPage/>   
+            },
+        ]
+    }
+])
+
+export default router;
