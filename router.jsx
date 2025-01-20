@@ -5,6 +5,7 @@ import DashboardPage from "./src/pages/DashboardPage";
 import ProductPage from "./src/pages/ProductPage";
 import VoucherPage from "./src/pages/VoucherPage";
 import VoucherDetailPage from "./src/pages/VoucherDetailPage";
+import SalePage from "./src/pages/SalePage";
 const router = createBrowserRouter([
     {
         path : "/",
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path : "voucher",
                 element : <VoucherPage/>   
+            },
+            {
+                path : "sale",
+                element : <SalePage/>   
             },
             {
                 path : "voucher-detail",
