@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const Breadcrumb = ({currentPage}) => {
   return (
       <div>
-        <div className='flex gap-2 items-center mb-5 text-sm'>
+        <div className='flex gap-2 items-center mb-5 text-xs'>
         <Link to="/" className='flex items-center gap-1'>
         <HiOutlineHome className='size-4'/>
           Dashboard
