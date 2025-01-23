@@ -8,15 +8,18 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "api": "json-server data.json --port 5000 -d 500 --watch"
+    "api": "json-server products.json --port 5000 -d 500 --watch"
   },
   "dependencies": {
     "axios": "^1.7.9",
     "flowbite": "^2.5.2",
+    "ldrs": "^1.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-hot-toast": "^2.5.1",
     "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.3",
+    "sweetalert2": "^11.15.10",
     "swr": "^2.3.0",
     "zustand": "^5.0.3"
   },

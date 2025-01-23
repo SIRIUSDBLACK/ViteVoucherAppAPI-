@@ -2,16 +2,17 @@ import React from 'react'
 import Container from '../components/Container'
 import Breadcrumb from '../components/Breadcrumb'
 import ProductList from '../components/ProductList'
+import CreateNewProduct from '../components/CreateNewProduct'
 
-const ProductPage = () => {
+const CreateProductPage = () => {
   return (
     <Container>
-      <Breadcrumb currentPage={"ProductModule"} links={[]}/>
+      <Breadcrumb currentPage={"ProductModule"} links={[{title:"Product Module",path:"/product"}]}/>
       <section>
-        <ProductList/>
+        <CreateNewProduct/>
       </section>
     </Container>
   )
 }
 
-export default ProductPage
+export default CreateProductPage

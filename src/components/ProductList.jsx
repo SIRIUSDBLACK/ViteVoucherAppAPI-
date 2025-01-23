@@ -1,8 +1,18 @@
 import React from 'react'
+import ProductListSkeletonLoader from './ProductListSkeletonLoader'
+import useSWR from 'swr'
+import ProductListEmptyStage from './ProductListEmptyStage'
+import ProductRow from './ProductRow'
 import { HiFilter, HiOutlineFilter, HiOutlinePencil, HiOutlineTrash, HiPencil, HiPlus, HiSearch } from 'react-icons/hi'
 import { HiMiniTrash } from 'react-icons/hi2'
+import { Link } from 'react-router-dom'
 
+const fetcher = (url) => fetch(url).then((res) => res.json());
 const ProductList = () => {
+     const baseUrl = import.meta.env.VITE_API_URL
+    // console.log(baseUrl); 
+
+    const {data,error,isLoading} = useSWR(`${baseUrl}/products`,fetcher);
   return (
    <div>
     
@@ -24,10 +34,10 @@ const ProductList = () => {
             Fliter
             <HiOutlineFilter/>
             </button>
-        <button className='border text-white flex text-sm font-medium items-center gap-1 px-5 py-2.5 rounded-md bg-blue-700'>
+        <Link to="/product/create" className='border text-white flex text-sm font-medium items-center gap-1 px-5 py-2.5 rounded-md bg-blue-700'>
             Add New Product
             <HiPlus/>
-        </button>
+        </Link>
         </div>
         </div>
         </form>
@@ -64,40 +74,9 @@ const ProductList = () => {
             </tr>
         </thead>
         <tbody>
-        <tr className="bg-white last:table-row hidden font-semibold  dark:bg-gray-800 dark:border-gray-700">       
-                <td colSpan="5" className="px-6 py-4  text-center font-medium">
-                There is no product .
-                </td>
-            </tr>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td className="px-6 py-4 font-medium">
-                1
-            </td>
-            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Apple 
-            </th>
-            <td className="px-6 py-4 text-end">
-                500
-            </td>
-            <td className="px-6 text-gray-700 text-xs font-medium py-4 text-end">
-                <p className=''>20 Jan 2025</p>
-                <p>11:53 PM</p>
-            </td>
-            <td className="px-6 py-4 text-right">
-           <div className="inline-flex rounded-md shadow-sm" role="group">
-                <button type="button" className="px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
-                    <HiOutlinePencil className="size-4"/>
 
-                </button>
-                <button type="button" className="px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
-                    <HiOutlineTrash className="size-4 text-red-600"/>
-
-                </button>
-            </div>
-
-            </td>
-            </tr>
-            
+         {isLoading ? (<ProductListSkeletonLoader/>):
+            data.length === 0 ? <ProductListEmptyStage/> : data.map((product) => <ProductRow key={product.id} product={product} />)}
             
         </tbody>
         </table>
