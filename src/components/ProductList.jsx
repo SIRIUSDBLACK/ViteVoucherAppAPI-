@@ -16,7 +16,7 @@ const ProductList = () => {
   return (
    <div>
     
-    <h1 className='font-semibold mb-3'>Products List</h1>
+    <h1 className='font-semibold text-xl mb-3'>Products List</h1>
 
     <div className="relative overflow-x-auto  shadow-md sm:rounded-lg">
         

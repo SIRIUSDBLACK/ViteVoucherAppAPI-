@@ -7,7 +7,7 @@ import CreateNewProduct from '../components/CreateNewProduct'
 const CreateProductPage = () => {
   return (
     <Container>
-      <Breadcrumb currentPage={"ProductModule"} links={[{title:"Product Module",path:"/product"}]}/>
+      <Breadcrumb currentPage={"Create Product"} links={[{title:"Product Module",path:"/product"}]}/>
       <section>
         <CreateNewProduct/>
       </section>

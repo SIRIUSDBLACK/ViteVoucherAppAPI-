@@ -16,7 +16,6 @@ const Breadcrumb = ({currentPage,links}) => {
 
         {links && links.map((link,index) => <Link to={`${link.path}`} key={index} className='flex items-center gap-1'>
         <HiChevronRight className='size-5'/>
-        <HiOutlineHome className='size-4'/>
           {link.title}      
         </Link>)}
         
