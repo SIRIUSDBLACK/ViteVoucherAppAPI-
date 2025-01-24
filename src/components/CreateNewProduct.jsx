@@ -21,8 +21,8 @@ quantum.register()
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify({
         product_name:data.product_name,
-        product_price:data.price,
-        creted_at:new Date().toISOString()
+        price:data.price,
+        created_at:new Date().toISOString()
       })
     });
     setisCreating(false)
@@ -90,7 +90,7 @@ quantum.register()
   <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">{isCreating ? <l-quantum
   size="20"
   speed="1.75" 
-  color="black" 
+  color="white" 
 ></l-quantum> :"Add Product"}</button>
 </form>
 </>

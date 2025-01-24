@@ -3,8 +3,7 @@ import ProductListSkeletonLoader from './ProductListSkeletonLoader'
 import useSWR from 'swr'
 import ProductListEmptyStage from './ProductListEmptyStage'
 import ProductRow from './ProductRow'
-import { HiFilter, HiOutlineFilter, HiOutlinePencil, HiOutlineTrash, HiPencil, HiPlus, HiSearch } from 'react-icons/hi'
-import { HiMiniTrash } from 'react-icons/hi2'
+import { HiOutlineFilter, HiPlus, HiSearch } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
