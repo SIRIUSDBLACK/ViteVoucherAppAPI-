@@ -60,5 +60,119 @@
       "price": 499,
       "created_at": "2025-01-22T14:46:50Z"
     }
+  ],
+  "vouchers": [
+    {
+      "voucher_id": "INV-20250129-2539",
+      "customer_name": "John",
+      "customer_email": "john@gmail.com",
+      "sale_date": "2025-01-29T18:14:34.435Z",
+      "all_correct": true,
+      "records": [
+        {
+          "saleCreated_time": "2025-01-29T18:14:31.980Z",
+          "saleID": 1738174471980,
+          "quantity": 1,
+          "product": {
+            "product_name": "Macbook Pro",
+            "price": "2000",
+            "created_at": "2025-01-24T03:29:12.303Z",
+            "id": 1
+          },
+          "cost": 2000
+        }
+      ],
+      "total": 2000,
+      "tax": 100,
+      "netTotal": 2100,
+      "id": 1
+    },
+    {
+      "voucher_id": "INV-20250129-4505",
+      "customer_name": "Mayor",
+      "customer_email": "mayor@gmail.com",
+      "sale_date": "2025-01-29T18:14:43.631Z",
+      "all_correct": true,
+      "records": [
+        {
+          "saleCreated_time": "2025-01-29T18:14:41.837Z",
+          "saleID": 1738174481837,
+          "quantity": 1,
+          "product": {
+            "id": 4,
+            "product_name": "Sony WH-1000XM5",
+            "price": 349,
+            "created_at": "2025-01-22T14:40:22Z"
+          },
+          "cost": 349
+        }
+      ],
+      "total": 349,
+      "tax": 17.45,
+      "netTotal": 366.45,
+      "id": 2
+    },
+    {
+      "voucher_id": "INV-20250129-1009",
+      "customer_name": "Kanye",
+      "customer_email": "kanye@gmail.com",
+      "sale_date": "2025-01-29T18:14:52.979Z",
+      "all_correct": true,
+      "records": [
+        {
+          "saleCreated_time": "2025-01-29T18:14:49.753Z",
+          "saleID": 1738174489753,
+          "quantity": 1,
+          "product": {
+            "id": 6,
+            "product_name": "Dell XPS 15",
+            "price": 1299,
+            "created_at": "2025-01-22T14:42:10Z"
+          },
+          "cost": 1299
+        }
+      ],
+      "total": 1299,
+      "tax": 64.95,
+      "netTotal": 1363.95,
+      "id": 3
+    },
+    {
+      "voucher_id": "INV-20250129-8141",
+      "customer_name": "Jane",
+      "customer_email": "jane@gmail.com",
+      "sale_date": "2025-01-29T18:18:56.877Z",
+      "all_correct": true,
+      "records": [
+        {
+          "saleCreated_time": "2025-01-29T18:18:16.510Z",
+          "saleID": 1738174696510,
+          "quantity": 2,
+          "product": {
+            "id": 6,
+            "product_name": "Dell XPS 15",
+            "price": 1299,
+            "created_at": "2025-01-22T14:42:10Z"
+          },
+          "cost": 2598
+        },
+        {
+          "saleCreated_time": "2025-01-29T18:18:54.305Z",
+          "saleID": 1738174734305,
+          "quantity": 1,
+          "product": {
+            "product_name": "Macbook Pro",
+            "price": "2000",
+            "created_at": "2025-01-24T03:29:12.303Z",
+            "id": 1
+          },
+          "cost": 2000
+        }
+      ],
+      "total": 4598,
+      "tax": 229.9,
+      "netTotal": 4827.9,
+      "id": 4
+    }
   ]
 }

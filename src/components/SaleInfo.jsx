@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import SaleForm from './SaleForm';
 import SaleTable from './SaleTable';
+import useRecordStore from '../store/useRecordStore';
 
 
 const SaleInfo = () => {
@@ -20,9 +21,14 @@ const SaleInfo = () => {
     
         return invoiceNumber;
       }   
+      const {records,resetRecord} = useRecordStore();
       const { register, handleSubmit, formState:{errors},reset} = useForm();
-      const HandleVoucherInfo = (saleData) => {
-        console.log(saleData); 
+      const total = records. reduce((total, record) => total + record.cost, 0);
+      const tax = total * 0.05;
+      const netTotal = total + tax; 
+      const HandleVoucherInfo = async(data) => {
+        await fetch(`${import.meta.env.VITE_API_URL}/vouchers`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({...data,sale_date:new Date().toISOString(),records,total,tax,netTotal})}); 
+        resetRecord();
         reset();
       }
   return (

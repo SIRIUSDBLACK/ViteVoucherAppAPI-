@@ -1,7 +1,11 @@
 import React from 'react'
 import { HiOutlineFilter, HiOutlinePencil, HiOutlineTrash, HiPlus, HiSearch } from 'react-icons/hi'
+import useSWR from 'swr'
+import VoucherListRow from './VoucherListRow';
 
+const fetcher = (url) => fetch(url).then((res) => res.json());
 const VoucherList = () => {
+    const {data,isLoading,error} = useSWR(`${import.meta.env.VITE_API_URL}/vouchers`,fetcher);
   return (
     <div>
 
@@ -10,15 +14,15 @@ const VoucherList = () => {
         <div className="relative overflow-x-auto  shadow-md sm:rounded-lg">
         
         <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-500 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-            <th scope="col" className="px-6 py-3">
+        <thead className="text-xs  text-gray-500 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr className='bg-gray-200'>
+            <th scope="col" className="px-6 py-5">
                 Voucher id.
             </th>
-            <th scope="col" className="px-6 py-3">
+            <th scope="col" className="px-6 py-5">
                 name
             </th>
-            <th scope="col" className="px-6 py-3 ">
+            <th scope="col" className="px-6 py-5 ">
                 <div className="flex items-center justify-end">
                 email
                 <a href="#"><svg className="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -26,7 +30,7 @@ const VoucherList = () => {
                     </svg></a>
                 </div>
             </th>
-            <th scope="col" className="px-3 py-3">
+            <th scope="col" className="px-3 py-5">
                 <div className="flex items-center text-end justify-end">
                 Created at
                 <a href="#"><svg className="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -34,46 +38,23 @@ const VoucherList = () => {
                     </svg></a>
                 </div>
             </th>
-            <th scope="col" className="px-6 text-end py-3">
+            <th scope="col" className="px-6 text-end py-5">
                 <span className='text-end'>Action</span>
             </th>
             </tr>
         </thead>
         <tbody>
-        <tr className="bg-white last:table-row hidden font-semibold  dark:bg-gray-800 dark:border-gray-700">       
-                <td colSpan="5" className="px-6 py-4  text-center font-medium">
-                There is no product .
-                </td>
-            </tr>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td className="px-6 py-4 font-medium">
-                #14124
-            </td>
-            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Htoo Htoo
-            </th>
-            <td className="px-6 py-4 text-end">
-                htoo22@gmail.com
-            </td>
-            <td className="px-6 text-gray-700 text-xs font-medium py-4 text-end">
-                <p className=''>20 Jan 2025</p>
-                <p>11:53 PM</p>
-            </td>
-            <td className="px-6 py-4 text-right">
-           <div className="inline-flex rounded-md shadow-sm" role="group">
-                <button type="button" className="px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
-                    <HiOutlinePencil className="size-4"/>
-
-                </button>
-                <button type="button" className="px-3 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
-                    <HiOutlineTrash className="size-4 text-red-600"/>
-
-                </button>
-            </div>
-
-            </td>
-            </tr>
-               
+                {!isLoading &&  (data?.length > 0 ? 
+                (data.map(voucher=>(<VoucherListRow key={voucher.id} voucher={voucher}/>)))
+                : 
+                 ( <tr className="bg-white  font-semibold  dark:bg-gray-800 dark:border-gray-700">       
+                    <td colSpan="5" className="px-6 py-4  text-center font-medium">
+                        There is no product .
+                    </td> 
+                  </tr>))
+                }
+                    
+                    
         </tbody>
         </table>
     </div>

@@ -4,6 +4,7 @@ import { useSWRConfig } from 'swr'
 import { tailChase } from 'ldrs'
 import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
+import ShowDate from './ShowDate'
 
 tailChase.register()
 
@@ -13,17 +14,6 @@ const ProductRow = ({product:{id,product_name,price,created_at}}) => {
     const [isDeleting,setisDeleting] = useState(false);
     const baseUrl = import.meta.env.VITE_API_URL
     const {mutate} = useSWRConfig();
-    const date = new Date (created_at)
-    const productDate = date.toLocaleDateString("en-GB", {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-      });
-      const productTime = date.toLocaleTimeString("en-GB", {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-      });
     
       const HandleProductDelete = async () => {
         setisDeleting(true);
@@ -47,8 +37,7 @@ const ProductRow = ({product:{id,product_name,price,created_at}}) => {
                 {price}
             </td>
             <td className="px-6 text-gray-700 text-xs font-medium py-4 text-end">
-                <p className=''>{productDate}</p>
-                <p>{productTime}</p>
+                <ShowDate timestamp={created_at}/>
             </td>
             <td className="px-6 py-4 text-right">
         <div className="inline-flex rounded-md shadow-sm" role="group">

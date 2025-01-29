@@ -4,7 +4,7 @@ import SaleTableRow from './SaleTableRow'
 
 const SaleTable = () => {
 
-  const {records} = useRecordStore()
+  const {records,changeQuantity,deleteRecord} = useRecordStore()
   const total = records. reduce((total, record) => total + record.cost, 0);
   const tax = total * 0.05;
   const netTotal = total + tax; 
@@ -39,7 +39,7 @@ const SaleTable = () => {
           <th colSpan={6} scope="row" className="px-6 text-center py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
             There is no Product yet
           </th>
-        </tr>: records.map((record,index) => <SaleTableRow key={record.saleID} record={record} index={index}/>) }
+        </tr>: records.map((record,index) => <SaleTableRow key={record.saleID} deleteRecord={deleteRecord} record={record} changeQuantity={changeQuantity} index={index}/>) }
       </tbody>
       <tfoot>
         <tr className="border-b dark:border-gray-700">
