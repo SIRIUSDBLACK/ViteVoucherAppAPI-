@@ -11,12 +11,16 @@ const SaleForm = () => {
     const { register, handleSubmit, formState:{errors},reset} = useForm();
 
     const HandleAddSale = (data) => {
+        const currentQuantity = data.product_quantity;
         addRecord({
-            product_id: Date.now(),
-            quantity:data.product_quantity,
-            product: JSON.parse(data.product_name)
+            saleCreated_time : new Date().toISOString(),         
+            saleID: Date.now(),
+            quantity: currentQuantity,
+            product: JSON.parse(data.product_name),
+            cost : currentQuantity * JSON.parse(data.product_name).price
         });
         console.log(useRecordStore.getState().records);
+        reset();
     }
     const {records,addRecord} = useRecordStore()
   return (

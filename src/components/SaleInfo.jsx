@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import SaleForm from './SaleForm';
+import SaleTable from './SaleTable';
 
 
 const SaleInfo = () => {
@@ -22,6 +23,7 @@ const SaleInfo = () => {
       const { register, handleSubmit, formState:{errors},reset} = useForm();
       const HandleVoucherInfo = (saleData) => {
         console.log(saleData); 
+        reset();
       }
   return (
     <>
@@ -64,7 +66,11 @@ const SaleInfo = () => {
             </div>
            
         </form>
-        <div className='flex items-center justify-end gap-3'>
+
+        <SaleForm/>
+        <SaleTable/>
+
+        <div className='flex mt-5 items-center justify-end gap-3'>
         <div>
         <input
             {...register("all_correct")}
@@ -86,7 +92,6 @@ const SaleInfo = () => {
              Confirm Voucher
              </button>
         </div>
-        <SaleForm/>
     </>
   )
 }
