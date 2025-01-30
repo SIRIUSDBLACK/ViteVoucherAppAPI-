@@ -17,6 +17,9 @@ const VoucherList = () => {
         <thead className="text-xs  text-gray-500 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr className='bg-gray-200'>
             <th scope="col" className="px-6 py-5">
+                #
+            </th>
+            <th scope="col" className="px-6 py-5">
                 Voucher id.
             </th>
             <th scope="col" className="px-6 py-5">
@@ -45,7 +48,7 @@ const VoucherList = () => {
         </thead>
         <tbody>
                 {!isLoading &&  (data?.length > 0 ? 
-                (data.map(voucher=>(<VoucherListRow key={voucher.id} voucher={voucher}/>)))
+                (data.map((voucher,index)=>(<VoucherListRow key={voucher.id} index={index} voucher={voucher}/>)))
                 : 
                  ( <tr className="bg-white  font-semibold  dark:bg-gray-800 dark:border-gray-700">       
                     <td colSpan="5" className="px-6 py-4  text-center font-medium">
