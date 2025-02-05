@@ -9,11 +9,10 @@ const VoucherDetail = () => {
     const {id} = useParams();
 
     const {data,isLoading,error} = useSWR( `${import.meta.env.VITE_API_URL}/vouchers/${id}`, fetcher); 
-    console.log(data);
 
   return (
     <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6">
-        {isLoading ? <VoucherDetailSkeletonLoader /> : <VDetailCard/>}
+        {isLoading ? <VoucherDetailSkeletonLoader /> : <VDetailCard key={data.id} voucher={data}/>}
     
   </div>
   )

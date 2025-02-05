@@ -210,6 +210,68 @@
       "tax": 49.95,
       "netTotal": 1048.95,
       "id": 6
+    },
+    {
+      "voucher_id": "INV-20250205-4710",
+      "customer_name": "Anne",
+      "customer_email": "anne@gmail.com",
+      "sale_date": "2025-02-05T14:19:49.374Z",
+      "all_correct": true,
+      "redirect_to_voucherDetail": true,
+      "records": [
+        {
+          "saleCreated_time": "2025-02-05T14:19:38.695Z",
+          "saleID": 1738765178695,
+          "quantity": 1,
+          "product": {
+            "product_name": "Macbook Pro",
+            "price": "2000",
+            "created_at": "2025-01-24T03:29:12.303Z",
+            "id": 1
+          },
+          "cost": 2000
+        },
+        {
+          "saleCreated_time": "2025-02-05T14:19:41.025Z",
+          "saleID": 1738765181025,
+          "quantity": 1,
+          "product": {
+            "id": 2,
+            "product_name": "iPhone 15",
+            "price": 999,
+            "created_at": "2025-01-22T14:38:15Z"
+          },
+          "cost": 999
+        },
+        {
+          "saleCreated_time": "2025-02-05T14:19:43.519Z",
+          "saleID": 1738765183519,
+          "quantity": 1,
+          "product": {
+            "id": 6,
+            "product_name": "Dell XPS 15",
+            "price": 1299,
+            "created_at": "2025-01-22T14:42:10Z"
+          },
+          "cost": 1299
+        },
+        {
+          "saleCreated_time": "2025-02-05T14:19:46.065Z",
+          "saleID": 1738765186065,
+          "quantity": 1,
+          "product": {
+            "id": 7,
+            "product_name": "Apple Watch Ultra",
+            "price": 799,
+            "created_at": "2025-01-22T14:43:00Z"
+          },
+          "cost": 799
+        }
+      ],
+      "total": 5097,
+      "tax": 254.85000000000002,
+      "netTotal": 5351.85,
+      "id": 7
     }
   ]
 }
