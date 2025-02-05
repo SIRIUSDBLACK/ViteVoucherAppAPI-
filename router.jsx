@@ -39,7 +39,7 @@ const router = createBrowserRouter([
                 element : <SalePage/>   
             },
             {
-                path : "voucher-detail",
+                path : "voucher/detail/:id",
                 element : <VoucherDetailPage/>   
             },
         ]
