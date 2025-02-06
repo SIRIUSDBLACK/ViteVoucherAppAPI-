@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ProductListSkeletonLoader from './ProductListSkeletonLoader'
 import useSWR from 'swr'
 import ProductListEmptyStage from './ProductListEmptyStage'
 import ProductRow from './ProductRow'
 import { HiOutlineFilter, HiPlus, HiSearch } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
+import { debounce } from 'lodash'
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 const ProductList = () => {
      const baseUrl = import.meta.env.VITE_API_URL
     // console.log(baseUrl); 
+    const [search,setSearch] = useState("")
+    const {data,error,isLoading} = useSWR(search ? `${baseUrl}/products?product_name_like=${search}`:`${baseUrl}/products`,fetcher);
 
-    const {data,error,isLoading} = useSWR(`${baseUrl}/products`,fetcher);
+    const handleSearch = debounce((e) => {setSearch(e.target.value)},500)
   return (
    <div>
     
@@ -26,7 +29,7 @@ const ProductList = () => {
         <span className="inline-flex items-center px-3 text-sm text-gray-600 bg-gray-50 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
             <HiSearch className=' size-4 md:size-5'/>
         </span>
-        <input type="text" id="website-admin" className=" rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" />
+        <input type="text" onChange={handleSearch} className=" rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" />
         </div>
         <div className='flex gap-2 items-center'>
         <button className='border text-sm flex items-center gap-1 px-5 py-2.5 rounded-md bg-blue-50'>

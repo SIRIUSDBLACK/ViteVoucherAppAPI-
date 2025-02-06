@@ -1,15 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { HiOutlineFilter, HiOutlinePencil, HiOutlineTrash, HiPlus, HiSearch } from 'react-icons/hi'
 import useSWR from 'swr'
 import VoucherListRow from './VoucherListRow';
+import { debounce, throttle } from 'lodash';
+import VoucherListSkeletonLoader from './VoucherListSkeletonLoader';
+
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 const VoucherList = () => {
-    const {data,isLoading,error} = useSWR(`${import.meta.env.VITE_API_URL}/vouchers`,fetcher);
+    const [search,setSearch] = useState("");
+    // const handleSearch = (e) => {
+    //     // console.log(e.target.value);
+    //     setSearch(e.target.value);
+    // }
+    const handleSearch = debounce((e)=>{setSearch(e.target.value)
+        console.log(e.target.value);
+    },500)
+    const {data,isLoading,error} = useSWR(search ? `${import.meta.env.VITE_API_URL}/vouchers?voucher_id_like=${search}`: `${import.meta.env.VITE_API_URL}/vouchers`,fetcher)
+
   return (
     <div>
-
         <h1 className='font-semibold mb-3'>Vouchers List</h1>
+
+         <div className="flex w-[200px] md:w-[300px] mb-5">
+        <span className="inline-flex items-center px-3 text-sm text-gray-600 bg-gray-50 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+            <HiSearch className=' size-4 md:size-5'/>
+        </span>
+        <input type="text" onChange={handleSearch} className=" rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" />
+        </div>
 
         <div className="relative overflow-x-auto  shadow-md sm:rounded-lg">
         
@@ -47,12 +65,13 @@ const VoucherList = () => {
             </tr>
         </thead>
         <tbody>
+            {isLoading && <VoucherListSkeletonLoader />}
                 {!isLoading &&  (data?.length > 0 ? 
                 (data.map((voucher,index)=>(<VoucherListRow key={voucher.id} index={index} voucher={voucher}/>)))
                 : 
                  ( <tr className="bg-white  font-semibold  dark:bg-gray-800 dark:border-gray-700">       
                     <td colSpan="5" className="px-6 py-4  text-center font-medium">
-                        There is no product .
+                        There is no voucher.
                     </td> 
                   </tr>))
                 }

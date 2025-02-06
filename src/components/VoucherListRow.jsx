@@ -19,7 +19,7 @@ const VoucherListRow = ({voucher,index}) => {
     const HandleDeleteBtn = () => {
         DeleteVoucher(voucher.id);
     }
-    console.log(voucher);
+    // console.log(voucher);
   return (
    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
             <td className="px-2 py-3 text-center font-medium">
