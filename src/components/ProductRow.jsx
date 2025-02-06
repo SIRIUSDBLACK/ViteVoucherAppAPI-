@@ -30,13 +30,13 @@ const ProductRow = ({product:{id,product_name,price,created_at}}) => {
             <td className="px-6 py-4 font-medium">
                 {id}
             </td>
-            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <th scope="row" className="px-1 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {product_name} 
             </th>
             <td className="px-6 py-4 text-end">
                 {price}
             </td>
-            <td className="px-6 text-gray-700 text-xs font-medium py-4 text-end">
+            <td className="px-4 text-gray-700 text-xs font-medium py-4 text-end">
                 <ShowDate timestamp={created_at}/>
             </td>
             <td className="px-6 py-4 text-right">
