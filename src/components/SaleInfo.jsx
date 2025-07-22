@@ -109,7 +109,6 @@ const SaleInfo = () => {
           <div>
           <input
               {...register("redirect_to_voucherDetail")}
-              required
               form='VoucherForm'
               id="redirect_to_voucherDetail"
               type="checkbox"

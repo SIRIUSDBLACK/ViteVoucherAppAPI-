@@ -32,10 +32,10 @@ const ProductList = () => {
         <input type="text" onChange={handleSearch} className=" rounded-none rounded-e-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search" />
         </div>
         <div className='flex gap-2 items-center'>
-        <button className='border text-sm flex items-center gap-1 px-5 py-2.5 rounded-md bg-blue-50'>
+        {/* <button className='border text-sm flex items-center gap-1 px-5 py-2.5 rounded-md bg-blue-50'>
             Fliter
             <HiOutlineFilter/>
-            </button>
+            </button> */}
         <Link to="/product/create" className='border text-white flex text-sm font-medium items-center gap-1 px-5 py-2.5 rounded-md bg-blue-700'>
             Add New Product
             <HiPlus/>
